@@ -1,12 +1,12 @@
 import Calendar from "../MyCalendar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AiFillPlusCircle } from "react-icons/ai";
 import TaskView from "../TaskView";
-
-
+import axios from "axios";
 
 const Dashboard = () => {
+  const [fetchedData, setFetchedData] = useState([]);
   const [submittedTask, setSubmittedTask] = useState([]);
   const [inputs, setInputs] = useState({
     id: uuidv4(),
@@ -26,6 +26,7 @@ const Dashboard = () => {
     });
   };
 
+  //old way of doing it without fetching API endpoints and doing CRUD operations
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmittedTask([...submittedTask, { ...inputs, id: uuidv4() }]);
@@ -40,6 +41,38 @@ const Dashboard = () => {
       date: "",
       id: uuidv4(),
     });
+  };
+
+  //handle function to post
+  // submitted form to api DB and evantually show on TaskView
+  const handleAnotherSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://burimi-issuetracker-api.azurewebsites.net/api/api/AddUsers/",
+        inputs
+      )
+      .then((response) => {
+        setFetchedData([...fetchedData, response.data]);
+        setSubmittedTask([
+          ...submittedTask,
+          { ...inputs, id: response.data.id },
+        ]);
+        setInputs({
+          assignTo: "",
+          taskRole: "",
+          taskName: "",
+          description: "",
+          notes: "",
+          priority: "",
+          isCompleted: false,
+          date: "",
+          id: uuidv4(),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleDelete = (id) => {
@@ -64,14 +97,23 @@ const Dashboard = () => {
     );
   };
 
-  const {
-    assignTo,
-    taskRole,
-    taskName,
-    description,
-    notes,
-    priority
-  } = inputs;
+  const { assignTo, taskRole, taskName, description, notes, priority } = inputs;
+
+  useEffect(() => {
+    async function pullData() {
+      try {
+        const response = await axios.get(
+          "https://burimi-issuetracker-api.azurewebsites.net/api/Api/getusers/"
+        );
+        console.log(response.data);
+        setFetchedData(response.data);
+      } catch (error) {
+        console.log("something went wrong" + error);
+      }
+    }
+    pullData();
+  }, []);
+
   return (
     <main className="flex flex-wrap justify-evenly">
       <div className="flex flex-col w-fit py-8 px-2 my-16">
@@ -176,7 +218,7 @@ const Dashboard = () => {
                 className="rounded hover:bg-amber-500 border-none text-black font-black text-xl h-15 w-25 p-2 bg-amber-600 mr-1 flex "
                 aria-label="Add Tasks"
                 type="submit"
-                onClick={handleSubmit}
+                onClick={handleAnotherSubmit}
               >
                 <AiFillPlusCircle className="mr-2 flex text-3xl" /> ADD TASK
               </button>
