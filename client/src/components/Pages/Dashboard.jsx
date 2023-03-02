@@ -5,19 +5,19 @@ import { AiFillPlusCircle } from "react-icons/ai";
 import TaskView from "../TaskView";
 import axios from "axios";
 
+const INITIAL_INPUTS = {
+  assignTo: "",
+  taskRole: "",
+  taskName: "",
+  description: "",
+  notes: "",
+  priority: "medium",
+};
+const BASE_URL = "https://63fe4639370fe830d9d19824.mockapi.io/users";
 const Dashboard = () => {
-  const [fetchedData, setFetchedData] = useState([]);
+  const [data, setData] = useState([]);
   const [submittedTask, setSubmittedTask] = useState([]);
-  const [inputs, setInputs] = useState({
-    id: uuidv4(),
-    assignTo: "",
-    taskRole: "",
-    taskName: "",
-    description: "",
-    notes: "",
-    priority: "",
-    isCompleted: false,
-  });
+  const [inputs, setInputs] = useState(INITIAL_INPUTS);
 
   const handleChange = (e) => {
     setInputs({
@@ -26,93 +26,69 @@ const Dashboard = () => {
     });
   };
 
-  //old way of doing it without fetching API endpoints and doing CRUD operations
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmittedTask([...submittedTask, { ...inputs, id: uuidv4() }]);
-    setInputs({
-      assignTo: "",
-      taskRole: "",
-      taskName: "",
-      description: "",
-      notes: "",
-      priority: "",
-      isCompleted: false,
-      date: "",
-      id: uuidv4(),
-    });
+
+    const newTask = { ...inputs, userId: uuidv4() };
+    setSubmittedTask([...submittedTask, newTask]);
+
+    try {
+      const response = await axios.post(
+        BASE_URL,
+        newTask
+      );
+      console.log(response.data);
+      setData(response.data);
+      setInputs(INITIAL_INPUTS);
+      // const updatedInputs = { ...newInputs, id: response.data.id };
+      // setInputs(updatedInputs);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  //handle function to post
-  // submitted form to api DB and evantually show on TaskView
-  const handleAnotherSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(
-        "https://burimi-issuetracker-api.azurewebsites.net/api/api/AddUsers/",
-        inputs
-      )
-      .then((response) => {
-        setFetchedData([...fetchedData, response.data]);
-        setSubmittedTask([
-          ...submittedTask,
-          { ...inputs, id: response.data.id },
-        ]);
-        setInputs({
-          assignTo: "",
-          taskRole: "",
-          taskName: "",
-          description: "",
-          notes: "",
-          priority: "",
-          isCompleted: false,
-          date: "",
-          id: uuidv4(),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const handleDelete = async (id) => {
+    try {
+      console.log('Deleting task with id:', id);
+      const response = await axios.delete(
+        `${BASE_URL}/${id}`
+      );
+      setSubmittedTask((prevTasks) =>
+        prevTasks.filter((task) => task.id !== id)
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleDelete = (id) => {
-    setSubmittedTask(submittedTask.filter((task) => task.id !== id));
-  };
   const handleReset = () => {
-    setInputs({
-      assignTo: "",
-      taskRole: "",
-      taskName: "",
-      description: "",
-      notes: "",
-      priority: "",
-      isCompleted: false,
-    });
-  };
-  const handleComplete = (id) => {
-    setSubmittedTask((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, isCompleted: true } : task
-      )
-    );
+    setInputs(INITIAL_INPUTS);
   };
 
-  const { assignTo, taskRole, taskName, description, notes, priority } = inputs;
+ const handleComplete = (id) => {};
 
   useEffect(() => {
     async function pullData() {
       try {
-        const response = await axios.get(
-          "https://burimi-issuetracker-api.azurewebsites.net/api/Api/getusers/"
-        );
+        const response = await axios.get(BASE_URL);
         console.log(response.data);
-        setFetchedData(response.data);
+        setData(response.data);
       } catch (error) {
         console.log("something went wrong" + error);
       }
     }
     pullData();
   }, []);
+
+  const {
+    assignTo,
+    taskName,
+    taskRole,
+    description,
+    notes,
+    priority,
+    isCompleted,
+  } = inputs;
 
   return (
     <main className="flex flex-wrap justify-evenly">
@@ -124,7 +100,7 @@ const Dashboard = () => {
           </h2>
 
           <input
-            id="assign-to"
+            id="assignTo"
             type="text"
             name="assignTo"
             className="mb-5 bg-neutral-700 w-full h-9 rounded text-white"
@@ -138,7 +114,7 @@ const Dashboard = () => {
             Task Role<span className="text-red-700">*</span>
           </h2>
           <input
-            id="task-role"
+            id="taskRole"
             type="text"
             name="taskRole"
             className="bg-neutral-700 w-full h-9 rounded p-1 text-white"
@@ -155,7 +131,7 @@ const Dashboard = () => {
           <h2 className="text-amber-600 font-bold mb-2">Priority</h2>
           <select
             name="priority"
-            id="priority-status"
+            id="priority"
             value={priority}
             onChange={handleChange}
             className="bg-neutral-600 text-neutral-100 border-none p-1 rounded w-fit"
@@ -174,7 +150,7 @@ const Dashboard = () => {
             Task Name<span className="text-red-700 ">*</span>
           </h2>
           <input
-            id="task-name"
+            id="taskName"
             type="text"
             name="taskName"
             className="w-full h-9 outline-none text-white bg-neutral-700 rounded-md p-2 mb-4 mt-1"
@@ -218,7 +194,7 @@ const Dashboard = () => {
                 className="rounded hover:bg-amber-500 border-none text-black font-black text-xl h-15 w-25 p-2 bg-amber-600 mr-1 flex "
                 aria-label="Add Tasks"
                 type="submit"
-                onClick={handleAnotherSubmit}
+                onClick={handleSubmit}
               >
                 <AiFillPlusCircle className="mr-2 flex text-3xl" /> ADD TASK
               </button>
