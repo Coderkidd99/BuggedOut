@@ -1,15 +1,10 @@
 import { AiFillCheckCircle, AiFillDelete } from "react-icons/ai";
 
-const TaskView = ({ submittedTask, handleDelete, handleComplete}) => {
+const TaskView = ({ handleDelete, handleComplete, data }) => {
   return (
-    <div className="flex flex-col items-center m-1">
-      {submittedTask.map((task) => (
-        <div
-          key={task.userId}
-          className={`flex flex-col mb-1 p-1 w-80% rounded-md bg-stone-700 ${
-            task.completed ? "text-green-500" : "text-red-500"
-          }`}
-        >
+    <div className="flex flex-col items-center m-1 mt-2 gap-2">
+      {data.map((task) => (
+        <div key={task.id} className="bg-neutral-700 p-1 rounded-md w-full ">
           <div className="flex justify-center rounded-md w-full p-1 text-2xl font-serif text-white">
             {task.taskName}
           </div>
@@ -27,7 +22,7 @@ const TaskView = ({ submittedTask, handleDelete, handleComplete}) => {
               {task.notes}
             </div>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between p-1">
             <AiFillDelete
               className="text-neutral-200 text-2xl cursor-pointer hover:text-red-700"
               onClick={() => handleDelete(task.id)}

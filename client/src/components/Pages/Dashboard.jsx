@@ -12,6 +12,7 @@ const INITIAL_INPUTS = {
   description: "",
   notes: "",
   priority: "medium",
+  isCompleted: false
 };
 const BASE_URL = "https://63fe4639370fe830d9d19824.mockapi.io/users";
 const Dashboard = () => {
@@ -28,44 +29,59 @@ const Dashboard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const newTask = { ...inputs, userId: uuidv4() };
     setSubmittedTask([...submittedTask, newTask]);
-
+  
     try {
-      const response = await axios.post(
-        BASE_URL,
-        newTask
-      );
+      const response = await axios.post(BASE_URL, newTask);
       console.log(response.data);
-      setData(response.data);
+      setData([...data, response.data]); 
       setInputs(INITIAL_INPUTS);
-      // const updatedInputs = { ...newInputs, id: response.data.id };
-      // setInputs(updatedInputs);
     } catch (err) {
       console.log(err);
     }
   };
-
+  
   const handleDelete = async (id) => {
     try {
       console.log('Deleting task with id:', id);
-      const response = await axios.delete(
-        `${BASE_URL}/${id}`
-      );
-      setSubmittedTask((prevTasks) =>
-        prevTasks.filter((task) => task.id !== id)
-      );
+      const response = await axios.delete(`${BASE_URL}/${id}`);
+      setSubmittedTask((prevTasks) => prevTasks.filter((task) => task.id !== id));
+      setData((prevTasks) => prevTasks.filter((task) => task.id !== id)); 
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   const handleReset = () => {
     setInputs(INITIAL_INPUTS);
   };
 
- const handleComplete = (id) => {};
+  const handleComplete = async (id) => {
+    const taskToUpdate = data.find(task => task.id === id);
+    const updatedTask = {
+      ...taskToUpdate,
+      isCompleted: !taskToUpdate.isCompleted
+    };
+
+    try {
+      const response = await axios.put(`${BASE_URL}/${id}`, updatedTask);
+      setData((prevTasks) =>
+        prevTasks.map((task) => {
+          if (task.id === id) {
+            return updatedTask;
+          } else {
+            return task;
+          }
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
   useEffect(() => {
     async function pullData() {
@@ -87,7 +103,6 @@ const Dashboard = () => {
     description,
     notes,
     priority,
-    isCompleted,
   } = inputs;
 
   return (
@@ -217,7 +232,7 @@ const Dashboard = () => {
           </h2>
         </div>
         <TaskView
-          submittedTask={submittedTask}
+          data={data}
           handleDelete={handleDelete}
           handleComplete={handleComplete}
         />
