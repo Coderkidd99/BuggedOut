@@ -28,13 +28,15 @@ const TaskView = ({ handleDelete, handleComplete, data, subdata }) => {
             <div className=" p-1 text-white text-lg">{task.taskRole}</div>
             <div className="">
               {task.priority === "high" ? (
-                <>
+                <div className="flex">
                   <FcHighPriority size={25}/>
-                </>
+                  <h3 className="flex ml-1 text-lg text-red-600 font-semibold">High</h3>
+                </div>
               ) : (
-                <>
+                <div className="flex">
                   <FcMediumPriority  size={25}/>
-                </>
+                  <h3 className="flex ml-1 text-lg text-orange-400 font-semibold">Medium</h3>
+                </div>
               )}
             </div>
           </div>

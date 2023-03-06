@@ -96,6 +96,7 @@ const Dashboard = () => {
   }, []);
 
   const { assignTo, taskName, taskRole, description, notes, priority } = inputs;
+  const completedTasks = data.filter((task) => task.isCompleted);
 
   return (
     <main className="flex flex-wrap justify-evenly">
@@ -222,9 +223,13 @@ const Dashboard = () => {
           <h2 className="flex-1 font-semibold  bg-neutral-700 rounded-md text-left">
             My Tasks - {data.length}
           </h2>
-          <h3 className="flex-1 text-xl text-white font-semibold self-end text-right">Completed - {0}</h3>
+          <h3 className="flex-1 text-xl text-white font-semibold self-end text-right">
+            {completedTasks.length > 0
+              ? `Completed - ${completedTasks.length}`
+              : "Completed - 0"}
+          </h3>
         </div>
-   
+
         <TaskView
           data={data}
           subdata={submittedTask}
