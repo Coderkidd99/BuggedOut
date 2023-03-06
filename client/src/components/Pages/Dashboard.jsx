@@ -226,13 +226,14 @@ const Dashboard = () => {
       </div>
 
       <div className="flex flex-col flex-wrap mt-24 mb-10">
-        <div className="bg-neutral-700  ">
-          <h2 className="font-semibold w-full text-white text-xl p-4 border-b bg-neutral-700">
-            My Tasks (2)
+        <div className="bg-neutral-700 mx-2 rounded-md ">
+          <h2 className="font-semibold w-full text-white text-xl p-4 border-b bg-neutral-700 rounded-md ">
+            My Tasks ({data.length})
           </h2>
         </div>
         <TaskView
           data={data}
+          subdata={submittedTask}
           handleDelete={handleDelete}
           handleComplete={handleComplete}
         />
