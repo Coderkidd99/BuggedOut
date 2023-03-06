@@ -1,17 +1,20 @@
 import { AiFillCheckCircle, AiFillDelete } from "react-icons/ai";
 import { FaCircle } from "react-icons/fa";
-import { FcHighPriority } from 'react-icons/fc';
-
-
+import { FcHighPriority, FcMediumPriority } from "react-icons/fc";
 
 const TaskView = ({ handleDelete, handleComplete, data, subdata }) => {
   return (
     <div className="flex flex-col items-center m-1 mt-2 gap-2 mx-2">
       {data.map((task) => (
-        <div key={task.id} className={`bg-neutral-700 p-1 rounded-md w-full ${task.isCompleted ? " opacity-60" : ""}`}>
+        <div
+          key={task.id}
+          className={`bg-neutral-700 p-1 rounded-md w-full ${
+            task.isCompleted ? " opacity-60" : ""
+          }`}
+        >
           <div
             className={`flex justify-end ${
-              task.isCompleted ? "text-green-400 " : "text-red-600"
+              task.isCompleted ? "text-green-400 text-sm" : "text-red-600 text-sm"
             }`}
           >
             <FaCircle />
@@ -23,7 +26,17 @@ const TaskView = ({ handleDelete, handleComplete, data, subdata }) => {
             <div className="p-1 text-white text-lg">{task.assignTo}</div>
             <div className="flex justify-center text-white p-1">|</div>
             <div className=" p-1 text-white text-lg">{task.taskRole}</div>
-            <div className="flex justify-end text-lg text-red-600"><FcHighPriority size={30} color="red" /></div>
+            <div className="">
+              {task.priority === "high" ? (
+                <>
+                  <FcHighPriority size={25}/>
+                </>
+              ) : (
+                <>
+                  <FcMediumPriority  size={25}/>
+                </>
+              )}
+            </div>
           </div>
           <div className="text-xl font-serif text-zinc-300 p-1 flex-wrap w-full ">
             {task.description}

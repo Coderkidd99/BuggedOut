@@ -11,8 +11,8 @@ const INITIAL_INPUTS = {
   taskName: "",
   description: "",
   notes: "",
-  priority: "medium",
-  isCompleted: false
+  priority: "",
+  isCompleted: false,
 };
 const BASE_URL = "https://63fe4639370fe830d9d19824.mockapi.io/users";
 const Dashboard = () => {
@@ -29,41 +29,42 @@ const Dashboard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const newTask = { ...inputs, userId: uuidv4() };
     setSubmittedTask([...submittedTask, newTask]);
-  
+
     try {
       const response = await axios.post(BASE_URL, newTask);
       console.log(response.data);
-      setData([...data, response.data]); 
+      setData([...data, response.data]);
       setInputs(INITIAL_INPUTS);
     } catch (err) {
       console.log(err);
     }
   };
-  
+
   const handleDelete = async (id) => {
     try {
-      console.log('Deleting task with id:', id);
+      console.log("Deleting task with id:", id);
       const response = await axios.delete(`${BASE_URL}/${id}`);
-      setSubmittedTask((prevTasks) => prevTasks.filter((task) => task.id !== id));
-      setData((prevTasks) => prevTasks.filter((task) => task.id !== id)); 
+      setSubmittedTask((prevTasks) =>
+        prevTasks.filter((task) => task.id !== id)
+      );
+      setData((prevTasks) => prevTasks.filter((task) => task.id !== id));
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   const handleReset = () => {
     setInputs(INITIAL_INPUTS);
   };
 
   const handleComplete = async (id) => {
-    const taskToUpdate = data.find(task => task.id === id);
+    const taskToUpdate = data.find((task) => task.id === id);
     const updatedTask = {
       ...taskToUpdate,
-      isCompleted: !taskToUpdate.isCompleted
+      isCompleted: !taskToUpdate.isCompleted,
     };
 
     try {
@@ -81,13 +82,11 @@ const Dashboard = () => {
       console.log(error);
     }
   };
-  
 
   useEffect(() => {
     async function pullData() {
       try {
         const response = await axios.get(BASE_URL);
-        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.log("something went wrong" + error);
@@ -96,14 +95,7 @@ const Dashboard = () => {
     pullData();
   }, []);
 
-  const {
-    assignTo,
-    taskName,
-    taskRole,
-    description,
-    notes,
-    priority,
-  } = inputs;
+  const { assignTo, taskName, taskRole, description, notes, priority } = inputs;
 
   return (
     <main className="flex flex-wrap justify-evenly">
@@ -225,12 +217,14 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex flex-col flex-wrap mt-24 mb-10">
-        <div className="bg-neutral-700 mx-2 rounded-md ">
-          <h2 className="font-semibold w-full text-white text-xl p-4 border-b bg-neutral-700 rounded-md ">
-            My Tasks ({data.length})
+      <div className="flex flex-col flex-wrap p-1 mt-24 mb-10">
+        <div className="flex w-full text-white text-xl p-4 border-b bg-neutral-700 mx-2 rounded-md ">
+          <h2 className="flex-1 font-semibold  bg-neutral-700 rounded-md text-left">
+            My Tasks - {data.length}
           </h2>
+          <h3 className="flex-1 text-xl text-white font-semibold self-end text-right">Completed - {0}</h3>
         </div>
+   
         <TaskView
           data={data}
           subdata={submittedTask}

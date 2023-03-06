@@ -3,7 +3,6 @@ import Dashboard from './components/Pages/Dashboard'
 import { Developers } from './components/Pages/Developers'
 import Insights from './components/Pages/Insights'
 import ErrorPage from './components/Pages/ErrorPage'
-import Home from './components/Pages/Home'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 
