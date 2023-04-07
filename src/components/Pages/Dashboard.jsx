@@ -17,9 +17,10 @@ const INITIAL_INPUTS = {
   iscompleted: false
 };
 
-//my api url on render
+//my api url on render (server)
 //https://buggedout-api.onrender.com/api/tasks/
-
+//the UI url (client)
+//https://buggedout-web-ui.onrender.com
 
 const BASE_URL = "https://buggedout-api.onrender.com/api";
 const Dashboard = () => {
