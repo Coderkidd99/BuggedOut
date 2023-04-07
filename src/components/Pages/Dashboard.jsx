@@ -17,6 +17,7 @@ const INITIAL_INPUTS = {
   iscompleted: false
 };
 
+//my api url on render
 //https://buggedout-api.onrender.com/api/tasks/
 
 
@@ -129,11 +130,6 @@ const Dashboard = () => {
         return updatedData;
       });
     };
-    
-  
-    // useEffect(() => {
-    //   window.location.reload();
-    // }, [data]);
 
 
   const { assignto, taskname, taskrole, description, notes, priority } = inputs;
