@@ -1,6 +1,8 @@
 import React from 'react'
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
+import { CiPaperplane, CiReceipt } from "react-icons/ci";
+
 
 export const NavbarData = [
     {
@@ -12,13 +14,13 @@ export const NavbarData = [
     {
       title: "Developers",
       path: "/developers",
-      icon: <FaIcons.FaAward />,
+      icon: <CiPaperplane />,
       cName: "nav-text"
     },
     {
       title: "Insights",
       path: "/insights",
-      icon: <AiIcons.AiFillBook />,
+      icon: <CiReceipt />,
       cName: "nav-text"
     }
   ]
