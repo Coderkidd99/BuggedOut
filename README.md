@@ -30,9 +30,11 @@ API
 The application uses an API to manage data persistence. The API is hosted on Render, and the URL is https://buggedout-api.onrender.com/api/tasks/.
 
 **Contributors**
+
 This application was developed by Bekim Burimi. If you would like to contribute to the project, please submit a pull request.
 
 **License**
+
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 
