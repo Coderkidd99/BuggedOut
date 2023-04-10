@@ -38,7 +38,7 @@ This application was developed by Bekim Burimi. If you would like to contribute 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 
-![BuggedOut React app UI](https://i.ibb.co/b1QqS6M/buggedout-1.png)
+<img src="https://i.ibb.co/b1QqS6M/buggedout-1.png" alt="BuggedOut React app UI" width="600">
 
 ![BuggedOut React app UI](https://i.ibb.co/y4Q0k0T/buggedout-2.png)
 
