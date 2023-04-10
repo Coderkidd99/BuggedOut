@@ -37,15 +37,9 @@ This application was developed by Bekim Burimi. If you would like to contribute 
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-
-<img src="https://i.ibb.co/b1QqS6M/buggedout-1.png" alt="BuggedOut React app UI" width="600">
-
-![BuggedOut React app UI](https://i.ibb.co/y4Q0k0T/buggedout-2.png)
-
-![BuggedOut React app UI](https://i.ibb.co/cQ7Db7w/buggedout-3.png)
-
-![BuggedOut React app UI](https://i.ibb.co/TmVdxDF/buggedout-4.png)
-
-![BuggedOut React app UI](https://i.ibb.co/Fnj1jh7/buggedout-5.png)
-
-![BuggedOut React app UI](https://i.ibb.co/9g5dkpF/buggedout-6.png)
+<a href="https://ibb.co/T45RFLh"><img src="https://i.ibb.co/8rV2Sc8/Screenshot-2023-04-10-142756.png" alt="Screenshot-2023-04-10-142756" width="400" height="250"></a>
+<a href="https://ibb.co/y4Q0k0T"><img src="https://i.ibb.co/9Zrn4nX/Screenshot-2023-04-10-142837.png" alt="Screenshot-2023-04-10-142837" width="400" height="250"></a>
+<a href="https://ibb.co/cQ7Db7w"><img src="https://i.ibb.co/qpPk0PC/Screenshot-2023-04-10-143018.png" alt="Screenshot-2023-04-10-143018" width="400" height="250"></a>
+<a href="https://ibb.co/TmVdxDF"><img src="https://i.ibb.co/cDGVSK7/Screenshot-2023-04-10-143034.png" alt="Screenshot-2023-04-10-143034" width="400" height="250"></a>
+<a href="https://ibb.co/Fnj1jh7"><img src="https://i.ibb.co/V3PGPLB/Screenshot-2023-04-10-143104.png" alt="Screenshot-2023-04-10-143104" width="400" height="250"></a>
+<a href="https://ibb.co/9g5dkpF"><img src="https://i.ibb.co/DW2jH1x/Screenshot-2023-04-10-143224.png" alt="Screenshot-2023-04-10-143224" width="400" height="250"></a>
