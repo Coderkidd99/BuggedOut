@@ -38,7 +38,7 @@ This application was developed by Bekim Burimi. If you would like to contribute 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 
-<a href="https://ibb.co/T45RFLh"><img src="https://i.ibb.co/8rV2Sc8/Screenshot-2023-04-10-142756.png" alt="Screenshot-2023-04-10-142756"></a>
+<a href="https://ibb.co/b1QqS6M"><img src="https://i.ibb.co/314GDT9/Screenshot-2023-04-10-142756.png" alt="Screenshot-2023-04-10-142756"></a>
 
 <a href="https://ibb.co/y4Q0k0T"><img src="https://i.ibb.co/9Zrn4nX/Screenshot-2023-04-10-142837.png" alt="Screenshot-2023-04-10-142837"></a>
 
