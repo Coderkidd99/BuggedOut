@@ -1,7 +1,6 @@
 # BuggedOut
 React app UI
-<img src"https://ibb.co/b1QqS6M"/>
-
+![BuggedOut React app UI](https://ibb.co/b1QqS6M)
 https://ibb.co/y4Q0k0T
 https://ibb.co/cQ7Db7w
 https://ibb.co/TmVdxDF
