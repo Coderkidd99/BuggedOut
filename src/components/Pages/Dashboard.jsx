@@ -1,5 +1,5 @@
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import "../../Calendar.css"
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AiFillPlusCircle } from "react-icons/ai";
