@@ -37,9 +37,9 @@ This application was developed by Bekim Burimi. If you would like to contribute 
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-<a href="https://ibb.co/T45RFLh"><img src="https://i.ibb.co/8rV2Sc8/Screenshot-2023-04-10-142756.png" alt="Screenshot-2023-04-10-142756" width="800" height="700"></a>
-<a href="https://ibb.co/y4Q0k0T"><img src="https://i.ibb.co/9Zrn4nX/Screenshot-2023-04-10-142837.png" alt="Screenshot-2023-04-10-142837" width="800" height="700"></a>
-<a href="https://ibb.co/cQ7Db7w"><img src="https://i.ibb.co/qpPk0PC/Screenshot-2023-04-10-143018.png" alt="Screenshot-2023-04-10-143018" width="800" height="700"></a>
-<a href="https://ibb.co/TmVdxDF"><img src="https://i.ibb.co/cDGVSK7/Screenshot-2023-04-10-143034.png" alt="Screenshot-2023-04-10-143034" width="800" height="700"></a>
-<a href="https://ibb.co/Fnj1jh7"><img src="https://i.ibb.co/V3PGPLB/Screenshot-2023-04-10-143104.png" alt="Screenshot-2023-04-10-143104" width="800" height="450"></a>
-<a href="https://ibb.co/9g5dkpF"><img src="https://i.ibb.co/DW2jH1x/Screenshot-2023-04-10-143224.png" alt="Screenshot-2023-04-10-143224" width="800" height="450"></a>
+<a href="https://ibb.co/T45RFLh"><img src="https://i.ibb.co/8rV2Sc8/Screenshot-2023-04-10-142756.png" alt="Screenshot-2023-04-10-142756" width="800" height="800"></a>
+<a href="https://ibb.co/y4Q0k0T"><img src="https://i.ibb.co/9Zrn4nX/Screenshot-2023-04-10-142837.png" alt="Screenshot-2023-04-10-142837" width="800" height="800"></a>
+<a href="https://ibb.co/cQ7Db7w"><img src="https://i.ibb.co/qpPk0PC/Screenshot-2023-04-10-143018.png" alt="Screenshot-2023-04-10-143018" width="800" height="800"></a>
+<a href="https://ibb.co/TmVdxDF"><img src="https://i.ibb.co/cDGVSK7/Screenshot-2023-04-10-143034.png" alt="Screenshot-2023-04-10-143034" width="800" height="800"></a>
+<a href="https://ibb.co/Fnj1jh7"><img src="https://i.ibb.co/V3PGPLB/Screenshot-2023-04-10-143104.png" alt="Screenshot-2023-04-10-143104" width="800" height="800"></a>
+<a href="https://ibb.co/9g5dkpF"><img src="https://i.ibb.co/DW2jH1x/Screenshot-2023-04-10-143224.png" alt="Screenshot-2023-04-10-143224" width="800" height="800"></a>
