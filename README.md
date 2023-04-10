@@ -1,4 +1,4 @@
-##**BuggedOut Task Manager**
+#**BuggedOut Task Manager**
 
 BuggedOut Task Manager is a web application for managing your tasks and assignments. It is built using ReactJS and Node.js, and uses an API to manage data persistence. The application allows you to add, edit, and delete tasks, as well as mark them as completed.
 
